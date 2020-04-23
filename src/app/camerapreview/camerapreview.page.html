@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ma caméra preview</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item (click)="takeCameraPreview()" class="ion-activated">
+        <ion-icon name="wine" slot="start"></ion-icon>
+        <ion-label>Lancer la camera Preview</ion-label>
+    </ion-item>
+</ion-content>
