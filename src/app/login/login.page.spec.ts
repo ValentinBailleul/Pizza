@@ -35,34 +35,4 @@ describe('LoginPage', () => {
 
     httpTestingController = TestBed.get(HttpTestingController);
   }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('Login', () => {
-    // a l initialisation le user doit etre undefined
-    expect(component.user).toBeUndefined();
-
-    // saisi du username a tester
-    const username = 'Bret';
-    component.id = username;
-    component.mdp = 'moonMdp';
-
-    // lancement de la methode de connexion
-    component.login();
-
-    // attente de la requete
-    const req = httpTestingController.expectOne('https://jsonplaceholder.typicode.com/users?username=' + username);
-    // reponse a la requete
-    req.flush(mockData);
-    // verification que toutes les requetes soient terminees
-    httpTestingController.verify();
-
-    // on veut que la variable user soit maintent definie
-    expect(component.user).toBeDefined();
-    // on veut egalement que le nom du user renseigne soit le meme que la reponse du mock
-    expect(component.user.nom).toBe(mockData[0].name);
-
-  });
 });

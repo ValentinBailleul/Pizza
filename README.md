@@ -1,7 +1,7 @@
-# TP IONIC 16/04 par Valentin BAILLEUL
+# Projet final par Valentin BAILLEUL
 ###### From _ionic blank starter_
-![Angular CI](https://github.com/ValentinBailleul/TP_NOTE_IONIC/workflows/Angular%20CI/badge.svg?branch=master)
-## Bienvenue sur mon projet IONIC !
+![Angular CI](https://github.com/ValentinBailleul/Pizza/workflows/Angular%20CI/badge.svg)
+## Bienvenue sur PizzApli !
 
 Plusieurs fonctionnalités sont disponibles, les voici :
 - Une alerte "pop-up" (petite alerte fait en cours)
