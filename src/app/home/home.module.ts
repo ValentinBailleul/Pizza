@@ -7,12 +7,14 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { HomePage } from './home.page';
 import { Camera } from '@ionic-native/camera/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    IonicStorageModule.forRoot(),
     RouterModule.forChild([
       {
         path: '',
@@ -21,6 +23,6 @@ import { Camera } from '@ionic-native/camera/ngx';
     ])
   ],
   declarations: [HomePage],
-  providers: [Camera, Geolocation, LocalNotifications]
+  providers: [Camera, Geolocation, LocalNotifications, IonicStorageModule]
 })
 export class HomePageModule {}

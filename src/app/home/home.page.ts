@@ -3,25 +3,36 @@ import {AlertController} from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-
+import { PizzaService} from '../services/pizza.service';
+import { Pizza } from '../models/pizza.model';
+import { PizzaPanier } from '../models/pizzaPanier.model';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
   title: string;
   imgData: string;
   longitude: string;
   latitude: string;
-
+  pizzaF: Pizza[] = [];
+  nombrePizzaPanier = this.pizzaService.numberPanier;
   // tslint:disable-next-line:max-line-length
   constructor(private alertController: AlertController,
               private camera: Camera,
               private geolocation: Geolocation,
-              private localNotifications: LocalNotifications) {}
-
+              private localNotifications: LocalNotifications,
+              private pizzaService: PizzaService,
+              private storage: Storage,
+              private router: Router) {
+    this.pizzaService.getPizza().subscribe(pizzas => {
+      this.pizzaF = pizzas;
+      this.nombrePizzaPanier = this.pizzaService.numberPanier;
+    });
+  }
   updateTitle() {
     this.title = 'Mon Nouveau Titre';
   }
@@ -29,19 +40,29 @@ export class HomePage {
   /**
    * https://ionicframework.com/docs/api/alert
    */
-  async fireAlert() {
+  async fireAlert(pizza) {
     // creation de l alerte
     const alert = await this.alertController.create({
       header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      subHeader: 'On est bon',
+      message: 'La pizza a bien été envoyé au panier',
       buttons: ['OK']
     });
-    // quand l alerte sera masquée
     alert.onDidDismiss().then(() => console.log('alerte masquée'));
 
-    // affichage de l alerte
     await alert.present();
+    this.pizzaService.addPanier(pizza);
+    this.nombrePizzaPanier = this.pizzaService.numberPanier;
+  }
+
+  detailsPanier() {
+    this.router.navigate(['/panier']);
+  }
+
+  detailsPizza(pizza) {
+    localStorage.setItem('pizza', JSON.stringify(pizza));
+    localStorage.setItem('ingredient', JSON.stringify(pizza.ingredient));
+    this.router.navigate(['/detail']);
   }
 
   takePicture() {

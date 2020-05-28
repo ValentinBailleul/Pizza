@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Panier</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let pizza of pizzaF; let i = index">
+    <img [src]="pizza.photo"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{pizza.nom}}
+      </ion-card-title>
+      <p>
+        {{pizza.prix}}
+      </p>
+    </ion-card-content>
+    <ion-item (click)="enleverPizza(pizza, i)" class="ion-activated">
+      <ion-icon name="remove-outline" slot="start"></ion-icon>
+      <ion-label>Enlever du panier</ion-label>
+    </ion-item>
+    <ion-item (click)="ajouterPizza(pizza)" class="ion-activated">
+      <ion-icon name="add-outline" slot="start"></ion-icon>
+      <ion-label>Ajout de cette pizza au panier</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

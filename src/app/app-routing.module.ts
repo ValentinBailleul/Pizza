@@ -11,6 +11,22 @@ const routes: Routes = [
     path: 'camerapreview',
     loadChildren: () => import('./camerapreview/camerapreview.module').then( m => m.CamerapreviewPageModule)
   },
+  {
+    path: 'detail',
+    loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'panier',
+    loadChildren: () => import('./panier/panier.module').then( m => m.PanierPageModule)
+  },
+  {
+    path: 'administration',
+    loadChildren: () => import('./administration/administration.module').then( m => m.AdministrationPageModule)
+  },
+  {
+    path: 'formulaire',
+    loadChildren: () => import('./formulaire/formulaire.module').then( m => m.FormulairePageModule)
+  },
 
 ];
 

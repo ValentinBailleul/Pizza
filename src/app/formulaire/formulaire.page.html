@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/administration" text="Administration"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Formulaire</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="SubmitForm()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input  name="nom" [(ngModel)]="pizzaTest.nom"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Prix</ion-label>
+        <ion-input name="prix" [(ngModel)]="pizzaTest.prix"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Photo</ion-label>
+        <ion-input name="photo" [(ngModel)]="pizzaTest.photo"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button type="submit"
+            ion-button
+            full
+            color="secondary">
+      Ajouter définitivement pizza
+    </button>
+  </form>
+</ion-content>

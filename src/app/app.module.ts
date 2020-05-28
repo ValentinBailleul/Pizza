@@ -9,7 +9,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-
+import { PizzaService } from './services/pizza.service';
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
         AppRoutingModule,
         HttpClientModule],
     providers: [
+        PizzaService,
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
