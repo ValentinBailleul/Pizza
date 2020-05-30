@@ -19,7 +19,7 @@
         <ion-input name="prix" [(ngModel)]="pizzaTest.prix"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Photo</ion-label>
+        <ion-label>Photo (en base64 svp)</ion-label>
         <ion-input name="photo" [(ngModel)]="pizzaTest.photo"></ion-input>
       </ion-item>
     </ion-list>
@@ -27,7 +27,7 @@
             ion-button
             full
             color="secondary">
-      Ajouter définitivement pizza
+      <ion-button expand="block">Ajouter définitivement cette pizza</ion-button>
     </button>
   </form>
 </ion-content>
